@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .serializers import CountRequestSerializer
 from .models import CountRequest
+from.utils import download_image
 
 class CreateView(generics.ListCreateAPIView):
     """This class defines the create behavior of our rest api."""
@@ -11,7 +12,8 @@ class CreateView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         """Save the post data when creating a new count_request."""
-        serializer.save()
+        count_request = serializer.save()
+        download_image(count_request=count_request)
 
 
 class DetailsView(generics.RetrieveUpdateDestroyAPIView):
