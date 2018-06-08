@@ -8,5 +8,6 @@ class CountRequestSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = CountRequest
-        fields = ('id', 'source_endpoint', 'source_bucket', 'source_filename', 'date_created', 'date_modified')
+        fields = ('id', 'source_endpoint', 'source_bucket', 'source_folder',
+                  'source_filename', 'date_created', 'date_modified')
         read_only_fields = ('count', 'date_created', 'date_modified')
