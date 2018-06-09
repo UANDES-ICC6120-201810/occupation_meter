@@ -6,6 +6,7 @@ class CountRequest(models.Model):
     source_bucket = models.CharField(max_length=255, blank=True)
     source_folder = models.CharField(max_length=255, blank=False)
     source_filename = models.CharField(max_length=255, blank=False)
+    bus_stop_congestion_id = models.PositiveIntegerField()
     count = models.PositiveIntegerField(blank=True, null=True, default=0)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)

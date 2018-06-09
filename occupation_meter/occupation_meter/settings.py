@@ -119,14 +119,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'OETLUPZHGGEULW6H5ASU'
-AWS_SECRET_ACCESS_KEY = '0yVwkRTRWm5d/+JGQCAirmZFXRUQwZBElfZ8EJkNVSs'
-AWS_STORAGE_BUCKET_NAME = 'zapo-storage'
-AWS_S3_ENDPOINT_URL = 'https://nyc3.digitaloceanspaces.com'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400'
-}
-AWS_LOCATION = 'occupation_images/202481589213556'
-
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = '/static/'

@@ -1,19 +1,13 @@
-import os
 import requests
-import shutil
-
-from .models import CountRequest
-
+from io import open as iopen
 
 
 def download_image(count_request):
     r = requests.get(
         url=count_request.get_endpoint()
     )
-    if r.status_code == 200:
-        with open('image.png', 'wb') as f:
-            r.raw.decode_content = True
-            shutil.copyfileobj(r.raw, f)
-    #TODO: send GET request for image download
-    #     https://{bucket}.{endpoint}/{location}/filename}
-    pass
+    tmp_filename = '/tmp/{bus_stop_congestion_id}_{source_filename}'.format(
+        bus_stop_congestion_id=count_request.bus_stop_congestion_id,
+        source_filename=count_request.source_filename)
+    with iopen(tmp_filename, 'wb') as file:
+        file.write(r.content)
